@@ -4,11 +4,11 @@ const FeaturesCard = (props) => {
   return (
     <section className="pt-16">
       <div className="container">
-        <div className="w-[270px] h-80 shadow-lg group relative">
+        <div className="h-80 shadow-lg group relative">
           <img
             src={props.icon}
             alt="Features Icon"
-            className="px-[103px] pt-16"
+            className="px-[103px] pt-16 mx-auto"
           />
           <h5 className="font-josef font-semibold text-secondery text-[22px] text-center pt-5">
             {props.heading}
