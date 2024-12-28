@@ -13,6 +13,9 @@ export default {
       colors: {
         primary: '#FB2E86',
         secondery: '#151875'
+      },
+      boxShadow: {
+        topCategoryShadow: '-5px 8px 0px 0px #7F00FF',
       }
     },
   },

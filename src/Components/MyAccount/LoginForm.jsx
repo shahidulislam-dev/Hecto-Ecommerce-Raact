@@ -15,7 +15,7 @@ const LoginForm = () => {
                 <button className='bg-primary w-[432px] h-12 rounded-md font-lato font-bold text-white text-[17px]'>Sign In</button>
                 <p className='font-lato text-[17px] text-[#9096B2] pt-6'>Don’t have an Account? Create account</p>
             </div>
-            <div className='py-28 w-[904px] h-28 mx-auto'>
+            <div className='pt-28 flex justify-center'>
                 <img src={WaterMark} alt="Water Mark Image" />
             </div>
             </div>

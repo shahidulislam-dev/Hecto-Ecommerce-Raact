@@ -1,10 +1,18 @@
-import React, { createContext } from "react";
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
 const apiData = createContext();
 
 const ContextApi = ({ children }) => {
+
+  let [apiInfo, setApiInfo] = useState([])
+
+  useEffect(()=>{
+    axios.get('https://dummyjson.com/products')
+    .then((response) => setApiInfo(response.data.products));
+  }, [])
   return (
     <>
-      <apiData.Provider value={"ami"}>{children}</apiData.Provider>
+      <apiData.Provider value={apiInfo}>{children}</apiData.Provider>
     </>
   );
 };

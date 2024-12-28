@@ -13,18 +13,27 @@ const TopCategories = () => {
             Top Categories
           </h1>
           <div className="flex items-center justify-between pt-14">
-          <div className="rounded-full bg-[#F6F7FB] p-20">
-            <img src={TrendChairImg} alt="Top Category Image" />
+          <div className="group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow">
+            <img src={TrendChairImg} alt="Top Category Image"  className="transition-transform duration-300 group-hover:scale-110 w-44 h-44"/>
+            <button className="absolute opacity-0 group-hover:opacity-100 group-hover:bottom-5 transition-all duration-300 bg-[#08D15F] font-josef text-[12px] text-white px-4 py-2 rounded text-sm"
+              > View Shop </button>
           </div>
-          <div className="rounded-full bg-[#F6F7FB] p-20">
-            <img src={TrendChairImg} alt="Top Category Image" />
+          <div className="group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow">
+            <img src={TrendChairImg1} alt="Top Category Image"  className="transition-transform duration-300 group-hover:scale-110 w-44 h-44"/>
+            <button className="absolute  opacity-0 group-hover:opacity-100 group-hover:bottom-5 transition-all duration-300 bg-[#08D15F] font-josef text-[12px] text-white px-4 py-2 rounded text-sm"
+              > View Shop </button>
           </div>
-          <div className="rounded-full bg-[#F6F7FB] p-20">
-            <img src={TrendChairImg} alt="Top Category Image" />
+          <div className="group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow">
+            <img src={TrendChairImg2} alt="Top Category Image"  className="transition-transform duration-300 group-hover:scale-110 w-44 h-44"/>
+            <button className="absolute  opacity-0 group-hover:opacity-100 group-hover:bottom-5 transition-all duration-300 bg-[#08D15F] font-josef text-[12px] text-white px-4 py-2 rounded text-sm"
+              > View Shop </button>
           </div>
-          <div className="rounded-full bg-[#F6F7FB] p-20">
-            <img src={TrendChairImg} alt="Top Category Image" />
+          <div className="group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow">
+            <img src={TrendChairImg3} alt="Top Category Image"  className="transition-transform duration-300 group-hover:scale-110 w-44 h-44"/>
+            <button className="absolute  opacity-0 group-hover:opacity-100 group-hover:bottom-5 transition-all duration-300 bg-[#08D15F] font-josef text-[12px] text-white px-4 py-2 rounded text-sm"
+              > View Shop </button>
           </div>
+          
           </div>
         </div>
       </div>
