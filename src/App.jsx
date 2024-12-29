@@ -8,6 +8,7 @@ import RootLayout from './RootLayout/RootLayout'
 import AccountPage from './Pages/AccountPage'
 import AboutUsPage from './Pages/AboutUsPage'
 import NotFoundPage from './Pages/NotFoundPage'
+import ShopPage from './Pages/ShopPage'
 
 function App() {
   let ecommerceRouter = createBrowserRouter(createRoutesFromElements(
@@ -17,6 +18,7 @@ function App() {
       <Route path='/contact' element={<ContactPage/>}/>
       <Route path='/blog' element={<BlogPage/>}/>
       <Route path='/about-us' element={<AboutUsPage/>}/>
+      <Route path='/shop' element={<ShopPage/>}/>
       <Route path='*' element={<NotFoundPage/>}/>
     </Route>
   ))
