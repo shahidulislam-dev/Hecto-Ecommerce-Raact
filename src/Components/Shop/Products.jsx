@@ -215,7 +215,7 @@ const Products = () => {
               ))}
             </div>
           </div>
-          <div className="w-[80%] flex flex-wrap justify-between items-center">
+          <div className="w-[80%] flex flex-wrap justify-between items-start">
             {filteredProducts.length > 0
               ? filteredProducts.map((item) => (
                   <div
