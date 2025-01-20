@@ -1,11 +1,11 @@
 import React from 'react'
-import BlogBanner from '../Components/Blog/BlogBanner'
 import Blogs from '../Components/Blog/Blogs'
+import Banner from '../Components/ComponentCommon/Banner'
 
 const BlogPage = () => {
   return (
     <>
-    <BlogBanner/>
+    <Banner title="Blog Page" name="Blog Page"/>
     <Blogs/>
     </>
   )

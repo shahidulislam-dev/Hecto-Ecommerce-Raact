@@ -16,6 +16,7 @@ export default {
       },
       boxShadow: {
         topCategoryShadow: '-5px 8px 0px 0px #7F00FF',
+        shadowArround: '5px 0px 20px 10px #F6F6FD80'
       }
     },
   },

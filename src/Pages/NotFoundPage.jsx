@@ -1,11 +1,11 @@
 import React from 'react'
-import NotFoundBannder from '../Components/PageNotFound/NotFoundBannder'
 import Message from '../Components/PageNotFound/Message'
+import Banner from '../Components/ComponentCommon/Banner'
 
 const NotFoundPage = () => {
   return (
     <>
-    <NotFoundBannder/>
+    <Banner title="404 Not Found" name="404 Not Found"/>
     <Message/>
     </>
   )

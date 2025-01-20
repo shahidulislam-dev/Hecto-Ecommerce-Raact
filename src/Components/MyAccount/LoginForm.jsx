@@ -1,8 +1,11 @@
 import React from 'react'
 import WaterMark from "../../assets/watermark.png"
+import Banner from '../ComponentCommon/Banner'
 
 const LoginForm = () => {
   return (
+    <>
+    <Banner title="My Account" name="My Account"/>
     <section className='pt-28 pb-20'>
         <div className='container mx-auto'>
             <div className="">
@@ -21,6 +24,8 @@ const LoginForm = () => {
             </div>
         </div>
     </section>
+    </>
+    
   )
 }
 

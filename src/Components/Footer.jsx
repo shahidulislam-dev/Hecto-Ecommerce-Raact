@@ -43,7 +43,7 @@ const Footer = () => {
                             <h3 className='font-josef text-[#000000] text-[22px]'>Pages</h3>
                             <ul className='font-lato text-[#8A8FB9] text-[16px] space-y-5 pt-10'>
                                 <li><Link to='/blog'>Blog</Link></li>
-                                <li>Browse the Shop</li>
+                                <li><Link to='/shop'>Browse the Shop</Link></li>
                                 <li>Category</li>
                                 <li>Pre-Built Pages</li>
                                 <li>Visual Composer Elements</li>

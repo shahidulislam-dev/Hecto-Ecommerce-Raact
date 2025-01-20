@@ -1,11 +1,12 @@
 import React from 'react'
-import ContactBanner from '../Components/Contact/ContactBanner'
 import ContactInfo from '../Components/Contact/ContactInfo'
 import SendMail from '../Components/Contact/SendMail'
+import Banner from '../Components/ComponentCommon/Banner'
 
 const ContactPage = () => {
   return (
     <>
+    <Banner title="Contact Us" name="Contact Us"/>
     <ContactBanner/>
     <ContactInfo/>
     <SendMail/>

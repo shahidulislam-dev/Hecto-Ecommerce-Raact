@@ -60,7 +60,7 @@ const Featured = () => {
             {data.map((item) => (
               <div className="!w-[90%] shadow-lg group relative mb-5" key={item.id}>
                 <div className="flex justify-center pt-20 pb-5 bg-[#F6F7FB] relative transition-all duration-300 group-hover:pt-16 group-hover:pb-10">
-                  <div className="absolute top-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-4 left-4 flex gap-2 transform -translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
                     <div className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery">
                       <FiShoppingCart />
                     </div>
@@ -104,13 +104,13 @@ const Featured = () => {
               className="bg-primary text-white px-4 py-4 rounded-full hover:bg-secondery"
               onClick={() => sliderRef.current.slickPrev()}
             >
-              <GoArrowLeft className='font-bold text-[20px]'/>
+              <GoArrowLeft className='font-bold text-[20px]' />
             </button>
             <button
               className="bg-primary text-white px-4 py-4 rounded-full hover:bg-secondery"
               onClick={() => sliderRef.current.slickNext()}
             >
-             <GoArrowRight className='font-bold text-[20px]'/>
+              <GoArrowRight className='font-bold text-[20px]' />
             </button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import LatestUpdateImg from "../../assets/latestUpdateImg.png";
 import WaterMark from "../../assets/watermark.png";
+import { Link } from "react-router-dom";
 
 const LatestUpdates = () => {
   return (
@@ -15,9 +16,7 @@ const LatestUpdates = () => {
           <h2 className="font-josef font-semibold text-[35px] text-secondery">
             Get Latest Update By Subscribe Our Newsletter
           </h2>
-          <button className="bg-primary px-9 py-4 font-josef text-white text-[17px] mt-7">
-            Shop Now
-          </button>
+          <Link to='/shop'><button className="bg-primary px-9 py-4 font-josef text-white text-[17px] mt-7">Shop Now</button></Link>
         </div>
       </div>
       <div className="pt-24 flex justify-center">
