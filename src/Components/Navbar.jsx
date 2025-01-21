@@ -45,7 +45,7 @@ const Navbar = () => {
                     <div className="flex items-center relative">
                         <input type="text" className='border-2 outline-none h-9 w-80 pl-2' onChange={handleSearch} />
                         {searchResult.length > 0 &&
-                            <div className="absolute top-10 left-0 right-0 z-10 p-2 h-[670px] overflow-y-scroll bg-slate-300">
+                            <div className="absolute top-10 left-0 right-0 z-30 p-2 h-[670px] overflow-y-scroll bg-slate-300">
                                 {searchResult.map((item) => (
                                     <div key={item.id} className='flex items-center gap-2 shadow-lg mt-3 p-2 bg-slate-200'>
                                         <img src={item.thumbnail} alt="Image From Search" className='w-20' />
