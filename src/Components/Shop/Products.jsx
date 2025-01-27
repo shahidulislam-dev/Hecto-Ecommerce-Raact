@@ -7,7 +7,9 @@ import WaterMark from "../../assets/watermark.png";
 import { FiZoomIn, FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Slices/CartSlice";
 
 const Products = () => {
   const data = useContext(apiData);
@@ -145,12 +147,12 @@ const Products = () => {
   let currentPageProducts = (filteredProducts.length > 0 ? filteredProducts : data).slice(firstItemIndex, lastItemIndex);
 
   let pages = [];
-  let pagesData = filteredProducts.length > 0 ? filteredProducts : data; 
+  let pagesData = filteredProducts.length > 0 ? filteredProducts : data;
 
   for (let i = 1; i <= Math.ceil(pagesData.length / perPage); i++) {
     pages.push(i);
   }
-  
+
 
   const handleNextPage = () => {
     if (currentPage !== totalPages) {
@@ -168,6 +170,23 @@ const Products = () => {
   }
 
 
+  const handlePerPage = (e) => {
+    setPerPage(e.target.value || 12)
+  }
+
+  const navigate = useNavigate();
+    const handleNavigation = ()=>{
+      navigate('/product-details');
+    }
+
+    // const handleCartNavigation = ()=>{
+    //   navigate('/cart');
+    // }
+
+    const dispatch = useDispatch();
+    const handleAddToCart = (item)=>{
+      dispatch(addToCart({...item, qty: 2}))
+    }
 
 
   return (
@@ -188,7 +207,7 @@ const Products = () => {
                 Per Page:{" "}
               </h6>
               <input
-                type="text"
+                type="text" onChange={handlePerPage}
                 className="w-14 h-6 outline-none border-2 border-[#E7E6EF] pl-1"
               />
             </div>
@@ -319,13 +338,13 @@ const Products = () => {
             <div className="flex flex-wrap justify-between items-start">
               {currentPageProducts.map(
                 (item) => (
-                  <div key={item.id} className="w-[23%] mb-10 pb-5 hover:shadow-lg group" >
-                    <div className="relative">
+                  <div key={item.id} className="w-[23%] mb-10 pb-5 hover:shadow-lg group" onClick={handleNavigation} >
+                    <div className="relative overflow-hidden group">
                       <div className="bg-[#F6F7FB] px-10 py-10 transition-all duration-300 group-hover:bg-[#EBF4F3]">
                         <img src={item.thumbnail} alt="Products Image" className="w-48 h-48" />
                       </div>
-                      <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transform translate-y-10 group-hover:translate-y-0 transition-all duration-500">
-                        <div className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
+                      <div className="absolute bottom-2 left-2 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                        <div onClick={(e)=>{e.stopPropagation(); handleAddToCart(item);}} className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
                           <FiShoppingCart />
                         </div>
                         <div className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
@@ -336,23 +355,26 @@ const Products = () => {
                         </div>
                       </div>
                     </div>
-                    <h4 className="font-josef font-semibold text-secondery text-[16px] pt-5 text-center">
-                      {item.title}
-                    </h4>
-                    <div className="flex items-center justify-center">
-                      <GoDotFill className="rounded-full text-[#DE9034] text-[20px]" />
-                      <GoDotFill className="rounded-full text-primary text-[20px]" />
-                      <GoDotFill className="rounded-full text-[#8568FF] text-[20px]" />
-                    </div>
-                    <div className="flex items-center justify-center gap-2 font-josef font-[400px] text-[14px]">
-                      <p className="text-secondery">
-                        $
-                        {(
-                          item.price -
-                          item.price * (item.discountPercentage / 100)
-                        ).toFixed(2)}
-                      </p>
-                      <p className="text-primary line-through">${item.price}</p>
+
+                    <div className="">
+                      <h4 className="font-josef font-semibold text-secondery text-[16px] pt-5 text-center">
+                        {item.title}
+                      </h4>
+                      <div className="flex items-center justify-center">
+                        <GoDotFill className="rounded-full text-[#DE9034] text-[20px]" />
+                        <GoDotFill className="rounded-full text-primary text-[20px]" />
+                        <GoDotFill className="rounded-full text-[#8568FF] text-[20px]" />
+                      </div>
+                      <div className="flex items-center justify-center gap-2 font-josef font-[400px] text-[14px]">
+                        <p className="text-secondery">
+                          $
+                          {(
+                            item.price -
+                            item.price * (item.discountPercentage / 100)
+                          ).toFixed(2)}
+                        </p>
+                        <p className="text-primary line-through">${item.price}</p>
+                      </div>
                     </div>
                   </div>
                 )

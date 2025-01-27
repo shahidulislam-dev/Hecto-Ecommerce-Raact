@@ -29,7 +29,7 @@ const TopCategories = () => {
             <Slider ref={sliderRef} {...settings}>
               {data.map((item) => (
                 <div className="">
-                  <div className="w-[90%] group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow">
+                  <div className="w-[90%] group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow ml-2">
                     <img
                       src={item.thumbnail}
                       alt="Top Category Image"

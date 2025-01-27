@@ -7,7 +7,6 @@ const ContactPage = () => {
   return (
     <>
     <Banner title="Contact Us" name="Contact Us"/>
-    <ContactBanner/>
     <ContactInfo/>
     <SendMail/>
     </>

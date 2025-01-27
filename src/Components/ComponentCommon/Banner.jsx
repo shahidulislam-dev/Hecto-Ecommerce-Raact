@@ -2,7 +2,7 @@ import React from 'react'
 
 const Banner = (props) => {
   return (
-    <section className='bg-[#F2F0FF] py-24'>
+    <section className='bg-[#F2F0FF] py-24 mt-24'>
         <div className="container mx-auto">
             <div className="">
                 <h4 className='font-josef font-bold text-[36px] text-secondery'>{props.title}</h4>

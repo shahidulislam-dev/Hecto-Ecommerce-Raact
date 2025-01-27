@@ -10,7 +10,7 @@ const Hero = () => {
     }
 
   return (
-    <section className='bg-[#F2F0FF] py-28 relative z-20 overflow-hidden'>
+    <section className='bg-[#F2F0FF] py-24 relative z-20 overflow-hidden mt-24'>
         <img className='absolute -top-1 -z-10 -left-180 w-[250px]' src={LightImg} alt="Hero Left Side Image" />
         <div className="w-4 h-4 bg-primary rounded-full absolute top-[550px] -z-10 left-14"></div>
         <div className="container mx-auto">

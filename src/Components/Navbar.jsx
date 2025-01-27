@@ -19,7 +19,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className='py-5'>
+        <nav className='py-5 fixed top-12 w-full z-40 bg-white shadow-sm'>
             <div className='container mx-auto'>
                 <div className="flex items-center gap-20 justify-between">
                     <div className=''>

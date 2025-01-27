@@ -8,7 +8,7 @@ import { FiZoomIn, FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Banner from '../ComponentCommon/Banner'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdStar, IoMdStarOutline, IoMdStarHalf } from "react-icons/io";
 
 const ProductListView = () => {
@@ -169,6 +169,20 @@ const ProductListView = () => {
     setCurrentPage(pageNumber);
   }
 
+  
+  const handlePerPage = (e) => {
+    setPerPage(e.target.value || 12)
+  }
+
+  const navigate = useNavigate();
+    const handleNavigation = ()=>{
+      navigate('/product-details');
+    }
+
+    const handleCartNavigation = ()=>{
+      navigate('/cart');
+    }
+
 
 
 
@@ -211,7 +225,7 @@ const ProductListView = () => {
                   Per Page:{" "}
                 </h6>
                 <input
-                  type="text"
+                  type="text" onChange={handlePerPage}
                   className="w-14 h-6 outline-none border-2 border-[#E7E6EF] pl-1"
                 />
               </div>
@@ -343,7 +357,7 @@ const ProductListView = () => {
             <div className="w-[80%]">
               <div className="flex flex-wrap justify-between items-start">
                 {currentPageProducts.map((item) => (
-                  <div key={item.id} className="mb-5 pb-5 w-full">
+                  <div key={item.id} className="mb-5 pb-5 w-full" onClick={handleNavigation}>
                     <div className="flex items-center justify-between p-5 shadow-shadowArround bg-white">
                       <div className="w-[20%] bg-[#F6F7FB] flex items-center justify-center p-2">
                         <img
@@ -375,7 +389,7 @@ const ProductListView = () => {
                         </div>
                         <p className="font-lato font-[400px] text-[#9295AA] text-[14px] w-[70%] pt-3">{item.description}</p>
                         <div className="flex gap-5 pt-5">
-                          <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
+                          <div onClick={(e)=>{e.stopPropagation(); handleCartNavigation();}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FaRegHeart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiZoomIn /></div>
                         </div>

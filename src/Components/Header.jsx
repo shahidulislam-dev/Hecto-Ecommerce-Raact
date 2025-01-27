@@ -2,10 +2,11 @@ import React from 'react'
 import { CiMail, CiHeart, CiShoppingCart } from "react-icons/ci";
 import { BiPhoneCall  } from "react-icons/bi";
 import { FaAngleDown, FaRegUser } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className='bg-[#7E33E0] text-[#F1F1F1] py-3 font-josef font-semibold'>
+    <header className='bg-[#7E33E0] text-[#F1F1F1] py-3 font-josef font-semibold fixed top-0 w-full z-50'>
         <div className='container mx-auto'>
             <div className='flex justify-between'>
                 <div className='flex items-center gap-12'>
@@ -36,7 +37,7 @@ const Header = () => {
                         </li>
                         <li className='flex items-center gap-2'>Login<FaRegUser/></li>
                         <li className='flex items-center gap-2'>Wishlit<CiHeart/></li>
-                        <li className='flex items-center gap-2'><CiShoppingCart className='text-[25px]'/></li>
+                        <Link to="/cart"><li className='flex items-center gap-2'><CiShoppingCart className='text-[25px]'/></li></Link>
                     </ul>
                 </div>
             </div>
