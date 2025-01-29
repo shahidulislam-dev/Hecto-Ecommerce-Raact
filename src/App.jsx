@@ -12,6 +12,7 @@ import ShopPage from './Pages/ShopPage'
 import ProductListView from './Components/Shop/ProductListView'
 import ProductDetailsPage from './Pages/ProductDetailsPage'
 import CartPage from './Pages/CartPage'
+import CheckoutPage from './Pages/CheckoutPage'
 
 function App() {
   let ecommerceRouter = createBrowserRouter(createRoutesFromElements(
@@ -25,6 +26,7 @@ function App() {
       <Route path='/shop-list' element={<ProductListView/>}/>
       <Route path='/product-details' element={<ProductDetailsPage/>}/>
       <Route path='/cart' element={<CartPage/>}/>
+      <Route path='/checkout' element={<CheckoutPage/>}/>
       <Route path='*' element={<NotFoundPage/>}/>
     </Route>
   ))

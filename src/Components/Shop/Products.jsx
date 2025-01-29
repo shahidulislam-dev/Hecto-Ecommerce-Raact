@@ -9,7 +9,9 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../Slices/CartSlice";
+import { addToCart, productDetails } from "../Slices/CartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Products = () => {
   const data = useContext(apiData);
@@ -175,18 +177,20 @@ const Products = () => {
   }
 
   const navigate = useNavigate();
-    const handleNavigation = ()=>{
-      navigate('/product-details');
-    }
+  const handleNavigation = () => {
+    navigate('/product-details');
+  }
 
-    // const handleCartNavigation = ()=>{
-    //   navigate('/cart');
-    // }
 
-    const dispatch = useDispatch();
-    const handleAddToCart = (item)=>{
-      dispatch(addToCart({...item, qty: 2}))
-    }
+  const dispatch = useDispatch();
+  const handleAddToCart = (item) => {
+    dispatch(addToCart({ ...item, qty: 1 }));
+  }
+
+  const handleProductDetail = (product) => {
+    dispatch(productDetails(product));
+    handleNavigation();
+  }
 
 
   return (
@@ -338,14 +342,15 @@ const Products = () => {
             <div className="flex flex-wrap justify-between items-start">
               {currentPageProducts.map(
                 (item) => (
-                  <div key={item.id} className="w-[23%] mb-10 pb-5 hover:shadow-lg group" onClick={handleNavigation} >
+                  <div key={item.id} className="w-[23%] mb-10 pb-5 hover:shadow-lg group" onClick={() => { handleProductDetail(item) }} >
                     <div className="relative overflow-hidden group">
                       <div className="bg-[#F6F7FB] px-10 py-10 transition-all duration-300 group-hover:bg-[#EBF4F3]">
                         <img src={item.thumbnail} alt="Products Image" className="w-48 h-48" />
                       </div>
                       <div className="absolute bottom-2 left-2 opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                        <div onClick={(e)=>{e.stopPropagation(); handleAddToCart(item);}} className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
+                        <div onClick={(e) => { e.stopPropagation(); handleAddToCart(item); }} className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
                           <FiShoppingCart />
+                          
                         </div>
                         <div className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
                           <FaRegHeart />

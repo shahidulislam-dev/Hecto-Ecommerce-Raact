@@ -10,6 +10,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import Banner from '../ComponentCommon/Banner'
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdStar, IoMdStarOutline, IoMdStarHalf } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { addToCart, productDetails } from "../Slices/CartSlice";
 
 const ProductListView = () => {
   const data = useContext(apiData);
@@ -184,6 +186,19 @@ const ProductListView = () => {
     }
 
 
+  
+
+
+  const dispatch = useDispatch();
+  const handleAddToCart = (item) => {
+    dispatch(addToCart({ ...item, qty: 1 }));
+  }
+
+  const handleProductDetail = (product) => {
+    dispatch(productDetails(product));
+    handleNavigation();
+  }
+
 
 
   const renderStars = (rating) => {
@@ -357,7 +372,7 @@ const ProductListView = () => {
             <div className="w-[80%]">
               <div className="flex flex-wrap justify-between items-start">
                 {currentPageProducts.map((item) => (
-                  <div key={item.id} className="mb-5 pb-5 w-full" onClick={handleNavigation}>
+                  <div key={item.id} className="mb-5 pb-5 w-full" onClick={()=>handleProductDetail(item)}>
                     <div className="flex items-center justify-between p-5 shadow-shadowArround bg-white">
                       <div className="w-[20%] bg-[#F6F7FB] flex items-center justify-center p-2">
                         <img
@@ -389,7 +404,7 @@ const ProductListView = () => {
                         </div>
                         <p className="font-lato font-[400px] text-[#9295AA] text-[14px] w-[70%] pt-3">{item.description}</p>
                         <div className="flex gap-5 pt-5">
-                          <div onClick={(e)=>{e.stopPropagation(); handleCartNavigation();}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
+                          <div onClick={(e)=>{e.stopPropagation(); handleAddToCart(item);}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FaRegHeart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiZoomIn /></div>
                         </div>
