@@ -372,7 +372,7 @@ const ProductListView = () => {
             <div className="w-[80%]">
               <div className="flex flex-wrap justify-between items-start">
                 {currentPageProducts.map((item) => (
-                  <div key={item.id} className="mb-5 pb-5 w-full" onClick={()=>handleProductDetail(item)}>
+                  <Link to={`/product-details/${(item.title).replaceAll(' ', '_')}`} onClick={() => handleProductDetail(item)}><div key={item.id} className="mb-5 pb-5 w-full">
                     <div className="flex items-center justify-between p-5 shadow-shadowArround bg-white">
                       <div className="w-[20%] bg-[#F6F7FB] flex items-center justify-center p-2">
                         <img
@@ -410,7 +410,7 @@ const ProductListView = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div></Link>
                 ))}
               </div>
               <div className="flex gap-2 justify-center text-secondery pt-10">

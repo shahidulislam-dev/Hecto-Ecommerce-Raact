@@ -14,7 +14,7 @@ const ProductDetails = () => {
 
   const dispatch = useDispatch();
     const handleAddToCart = (item)=>{
-      dispatch(addToCart({...item, qty: 2}))
+      dispatch(addToCart({...item, qty: 1}))
     }
 
   //Code for Ratings

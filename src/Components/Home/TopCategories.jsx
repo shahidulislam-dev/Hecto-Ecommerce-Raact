@@ -3,6 +3,9 @@ import { apiData } from "../ContextApi";
 import Slider from "react-slick";
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
+import { useDispatch } from "react-redux";
+import { productDetails } from "../Slices/CartSlice";
+import { Link } from "react-router-dom";
 
 const TopCategories = () => {
   let data = useContext(apiData);
@@ -18,6 +21,13 @@ const TopCategories = () => {
     pauseOnHover: true,
   };
 
+  const dispatch = useDispatch();
+  
+
+  const handleProductDetail = (product) => {
+    dispatch(productDetails(product));
+  }
+
   return (
     <section className="pt-20">
       <div className="container mx-auto">
@@ -29,16 +39,16 @@ const TopCategories = () => {
             <Slider ref={sliderRef} {...settings}>
               {data.map((item) => (
                 <div className="">
-                  <div className="w-[90%] group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow ml-2">
+                  <Link to={`/product-details/${(item.title).replaceAll(' ', '_')}`} onClick={() => handleProductDetail(item)}><div className="w-[90%] group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow ml-2">
                     <img
                       src={item.thumbnail}
                       alt="Top Category Image"
                       className="transition-transform duration-300 group-hover:scale-110 w-44 h-44"
                     />
                     <button className="absolute opacity-0 group-hover:opacity-100 group-hover:bottom-5 transition-all duration-300 bg-[#08D15F] font-josef text-[12px] text-white px-4 py-2 rounded text-sm">
-                      View Shop
+                      View Details
                     </button>
-                  </div>
+                  </div></Link>
                   <h3 className="font-josef font-[400px] text-secondery text-[20px] text-center pt-7">
                     {item.title}
                   </h3>
