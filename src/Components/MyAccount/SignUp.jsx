@@ -60,7 +60,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Banner title="My Account" name="My Account" />
+      <Banner title="Ragistration Page" name="Ragistration Page" />
       <section className="pt-28 pb-20">
         <div className="container mx-auto">
           <form onSubmit={handleSignUp}>

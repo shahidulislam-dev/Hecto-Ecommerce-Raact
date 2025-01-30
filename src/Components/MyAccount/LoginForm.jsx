@@ -63,7 +63,7 @@ const handleLogin = async (e) => {
 
   return (
     <>
-      <Banner title="My Account" name="My Account" />
+      <Banner title="Login Page" name="Login Page" />
       <section className="pt-28 pb-20">
         <div className="container mx-auto">
           <div className="">

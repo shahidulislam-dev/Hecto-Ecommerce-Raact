@@ -28,7 +28,7 @@ function App() {
   });
   let ecommerceRouter = createBrowserRouter(createRoutesFromElements(
     <Route element={<RootLayout/>}>
-      <Route path='/' element={user ? <Navigate to="/sign-up"/> : <AccountPage/>}/>
+      <Route path='/' element={user ? <Navigate to="/home"/> : <AccountPage/>}/>
       <Route path='/home' element={<HomePage/>}/>
       <Route path='/account' element={<AccountPage/>}/>
       <Route path='/sign-up' element={<SignUp/>}/>
