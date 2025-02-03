@@ -48,7 +48,7 @@ const SignUp = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       if (user) {
-        await setDoc(doc(db, "Users", user.uid), { email: user.email, firstName, lastName });
+        await setDoc(doc(db, "Users", user.uid), { email: user.email, firstName, lastName, photo: "" });
       }
       
       toast.success("User Signed Up Successfully!!", { position: "top-center" });

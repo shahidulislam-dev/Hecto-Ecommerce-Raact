@@ -8,6 +8,7 @@ import "react-tabs/style/react-tabs.css";
 import { useDispatch } from "react-redux";
 import { addToCart, productDetails } from "../Slices/CartSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LeatestProducts = () => {
   let data = useContext(apiData);
@@ -22,6 +23,7 @@ const LeatestProducts = () => {
   const dispatch = useDispatch();
   const handleAddToCart = (item) => {
     dispatch(addToCart({ ...item, qty: 1 }));
+    toast.success("Added To Cart!!", { position: "top-center", autoClose: 1000, });
   }
 
   const handleProductDetail = (product) => {

@@ -8,6 +8,7 @@ import { FiHeart, FiMail } from "react-icons/fi";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Header = () => {
     const cartData = useSelector((state) => state.cartItemManager.cartItems);
@@ -21,12 +22,11 @@ const Header = () => {
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
                         setUserDetails(docSnap.data());
-                        console.log(docSnap.data());
                     } else {
-                        console.log("User data not found in Firestore");
+                        toast.error("User data not found in Firestore", { position: "top-center" });
                     }
                 } catch (error) {
-                    console.error("Error fetching user data:", error);
+                    toast.error("Error fetching user data:", error, { position: "top-center" });
                 }
             } else {
                 console.log("No user is logged in");
@@ -56,15 +56,23 @@ const Header = () => {
 
                     {userDetails ? (
                         <div className="flex items-center gap-12">
-                            <div className="flex items-center gap-2">
-                                <FiMail />
-                                <p>{userDetails.email}</p>
+                        <div className="flex items-center gap-2">
+                          {userDetails.photo ? (
+                            <img src={userDetails.photo} alt="Profile Image" className="w-6 h-6 rounded-full" />
+                          ) : (
+                            <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
+                               ??
                             </div>
-                            <div className="flex items-center gap-2">
-                                <BiPhoneCall />
-                                <p>{userDetails.firstName}</p>
-                            </div>
+                          )}
+                          <FiMail />
+                          <p>{userDetails.email}</p>
                         </div>
+                        <div className="flex items-center gap-2">
+                          <BiPhoneCall />
+                          <p>{userDetails.firstName}</p>
+                        </div>
+                      </div>
+                      
                     ) : (
                         <div className="flex items-center gap-12">
                             <div className="flex items-center gap-2">

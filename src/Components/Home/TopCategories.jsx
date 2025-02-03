@@ -38,7 +38,7 @@ const TopCategories = () => {
           <div className="pt-14">
             <Slider ref={sliderRef} {...settings}>
               {data.map((item) => (
-                <div className="">
+                <div className="" key={item.id}>
                   <Link to={`/product-details/${(item.title).replaceAll(' ', '_')}`} onClick={() => handleProductDetail(item)}><div className="w-[90%] group relative rounded-full bg-[#F6F7FB] p-20 flex items-center justify-center hover:shadow-topCategoryShadow ml-2">
                     <img
                       src={item.thumbnail}

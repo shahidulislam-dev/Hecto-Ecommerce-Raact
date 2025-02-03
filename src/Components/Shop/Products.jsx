@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, productDetails } from "../Slices/CartSlice";
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const Products = () => {
   const data = useContext(apiData);
@@ -179,6 +180,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const handleAddToCart = (item) => {
     dispatch(addToCart({ ...item, qty: 1 }));
+    toast.success("Added To Cart!!", { position: "top-center", autoClose: 1000, });
   }
 
   const handleProductDetail = (product) => {

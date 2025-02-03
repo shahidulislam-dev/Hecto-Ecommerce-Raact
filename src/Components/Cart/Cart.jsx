@@ -4,6 +4,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, decrement, deleteItem, increment } from '../Slices/CartSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
 
@@ -12,6 +13,7 @@ const Cart = () => {
     let dispatch = useDispatch();
     const handleDeleteProduct = (index) => {
         dispatch(deleteItem(index))
+        toast.success("Deleted Item From Cart!!", { position: "top-center", autoClose: 1000, });
     }
 
     const handleIncrement = (index) => {
@@ -31,6 +33,7 @@ const Cart = () => {
 
     const deleteAllCartItems = () => {
         dispatch(clearCart())
+        toast.success("Deleted All From Cart!!", { position: "top-center", autoClose: 1000, });
     }
 
     let sum = 0;
@@ -65,7 +68,7 @@ const Cart = () => {
                                             <div className="flex items-center gap-3 w-[45%]">
                                                 <div className="relative bg-slate-300">
                                                     <img src={item.thumbnail} alt="Product Image For Cart" className='w-20 h-[90px]' />
-                                                    <div onClick={() => handleDeleteProduct(index)} className="w-4 h-4 bg-black text-white text-[8px] rounded-full flex justify-center items-center absolute -top-1 -right-1"><ImCross /></div>
+                                                    <div onClick={() => handleDeleteProduct(index)} className="w-4 h-4 bg-black text-white text-[8px] rounded-full flex justify-center items-center absolute -top-1 -right-1 cursor-pointer"><ImCross /></div>
                                                 </div>
                                                 <div className="font-josef">
                                                     <h4 className='text-secondery text-[16px]'>{item.title}</h4>
