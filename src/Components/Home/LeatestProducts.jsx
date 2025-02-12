@@ -38,11 +38,11 @@ const LeatestProducts = () => {
         </div>
 
         <Tabs>
-          <TabList className="flex justify-center gap-14 font-lato text-[18px] text-secondery pt-5">
-            <Tab className="cursor-pointer px-4 py-2">New Arrival</Tab>
-            <Tab className="cursor-pointer px-4 py-2">Best Seller</Tab>
-            <Tab className="cursor-pointer px-4 py-2">Featured</Tab>
-            <Tab className="cursor-pointer px-4 py-2">Special Offer</Tab>
+          <TabList className="border-none outline-none flex items-center justify-center gap-20 font-josef text-secondery text-[20px] pt-8">
+            <Tab className="cursor-pointer outline-none px-4 py-2 text-primary hover:text-secondery">New Arrival</Tab>
+            <Tab className="cursor-pointer outline-none px-4 py-2 text-primary hover:text-secondery">Best Seller</Tab>
+            <Tab className="cursor-pointer outline-none px-4 py-2 text-primary hover:text-secondery">Featured</Tab>
+            <Tab className="cursor-pointer outline-none px-4 py-2 text-primary hover:text-secondery">Special Offer</Tab>
           </TabList>
 
           {splitData.map((products, index) => (

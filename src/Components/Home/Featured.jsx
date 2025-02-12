@@ -18,7 +18,7 @@ const Featured = () => {
 
   let settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay: true,
@@ -39,6 +39,7 @@ const Featured = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          infinite: true,
         },
       },
       {
@@ -46,6 +47,7 @@ const Featured = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: true,
         },
       },
     ],
