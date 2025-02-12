@@ -77,7 +77,7 @@ const LoginForm = () => {
         toast.success("User logged in Successfully", {
           position: "top-center",
         });
-        window.location.href = "/profile";
+        navigate("/home");
       }
     });
   }
