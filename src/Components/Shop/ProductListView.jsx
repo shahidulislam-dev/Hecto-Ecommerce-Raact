@@ -366,7 +366,7 @@ const ProductListView = () => {
             <div className="w-[80%]">
               <div className="flex flex-wrap justify-between items-start">
                 {currentPageProducts.map((item) => (
-                  <Link to={`/product-details/${(item.title).replaceAll(' ', '_')}`} onClick={() => handleProductDetail(item)}><div key={item.id} className="mb-5 pb-5 w-full">
+                  <Link to={`/product-details/${(item.title).replaceAll(' ', '_')}`} onClick={(e) => handleProductDetail(item)}><div key={item.id} className="mb-5 pb-5 w-full">
                     <div className="flex items-center justify-between p-5 shadow-shadowArround bg-white">
                       <div className="w-[20%] bg-[#F6F7FB] flex items-center justify-center p-2">
                         <img
@@ -398,7 +398,7 @@ const ProductListView = () => {
                         </div>
                         <p className="font-lato font-[400px] text-[#9295AA] text-[14px] w-[70%] pt-3">{item.description}</p>
                         <div className="flex gap-5 pt-5">
-                          <div onClick={(e)=>{e.stopPropagation(); handleAddToCart(item);}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
+                          <div onClick={(e)=>{e.stopPropagation(); e.preventDefault(); handleAddToCart(item);}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FaRegHeart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiZoomIn /></div>
                         </div>

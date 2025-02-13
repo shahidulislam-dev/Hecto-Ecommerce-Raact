@@ -1,5 +1,4 @@
 import React from 'react'
-import TrendImg from "../../assets/trendChairImg.png"
 import { FaRegHeart } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
@@ -54,7 +53,7 @@ const ProductDetails = () => {
                     ))}
                 </div>
                 <div className="bg-slate-300 p-2 w-[30rem] h-[36rem] flex items-center justify-center">
-                  <img src={product.thumbnail} alt="" className='w-96 h-96' />
+                  <img src={product.thumbnail} alt="" className='w-96 h-[28rem]' />
                 </div>
               </div>
 

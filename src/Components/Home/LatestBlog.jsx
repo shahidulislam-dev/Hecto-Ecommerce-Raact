@@ -4,15 +4,18 @@ import LatestBlogImg1 from "../../assets/latestBlogImg1.png";
 import LatestBlogImg2 from "../../assets/latestBlogImg2.png";
 import { FaPenNib } from "react-icons/fa";
 import { LuCalendarDays } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
 const LatestBlog = () => {
+  const navigate = useNavigate()
+  const goToBlogPage = ()=>{navigate("/blog")}
   return (
     <section className="pt-24 pb-24">
       <div className="container mx-auto">
         <h1 className="font-josef font-bold text-secondery text-[42px] text-center pb-20">
           Leatest Blog
         </h1>
-        <div className="flex items-center justify-between">
+        <div onClick={goToBlogPage} className="flex items-center justify-between">
           <div className="shadow-lg w-[32%]">
             <img
               src={LatestBlogImg}

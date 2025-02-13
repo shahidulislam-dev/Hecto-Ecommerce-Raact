@@ -81,9 +81,9 @@ const Cart = () => {
                                                 <p className='text-center'>${item.price}</p>
                                             </div>
                                             <div className="flex items-center justify-center font-josef text-[#BEBFC2] overflow-hidden h-5 w-[17%]">
-                                                <div onClick={() => handleDecrement(index)} className="bg-[#E7E7EF] px-2 py-[5px] text-[12px] cursor-pointer"><FaMinus /></div>
-                                                <div className="px-3 py-[1px] text-[14px] font-bold bg-[#F0EFF2]"><p className='text-center'>{item.qty}</p></div>
-                                                <div onClick={() => handleIncrement(index)} className="bg-[#E7E7EF] px-2 py-[5px] text-[12px] cursor-pointer"><FaPlus /></div>
+                                                <div onClick={() => handleDecrement(index)} className="bg-[#E7E7EF] px-2 py-[5px] text-[12px] text-secondery cursor-pointer"><FaMinus /></div>
+                                                <div className="px-3 py-[1px] text-[14px] bg-[#F0EFF2] text-secondery"><p className='text-center'>{item.qty}</p></div>
+                                                <div onClick={() => handleIncrement(index)} className="bg-[#E7E7EF] px-2 py-[5px] text-[12px] text-secondery cursor-pointer"><FaPlus /></div>
                                             </div>
                                             <div className="font-josef text-secondery text-[14px] w-[17%]">
                                                 <p className='text-center'>${(item.price * item.qty).toFixed(2)}</p>

@@ -1,8 +1,11 @@
 import React from "react";
 import { HiCheck } from "react-icons/hi";
 import DiscountChairImg from "../../assets/discountChairImg.png";
+import { useNavigate } from "react-router-dom";
 
 const DiscountItem = () => {
+  const navigate = useNavigate()
+  const gotToShop = ()=>{navigate("/shop")}
   return (
     <section className="pt-16">
       <div className="container mx-auto">
@@ -65,7 +68,7 @@ const DiscountItem = () => {
                 </div>
               </div>
               <div className="pt-9">
-                <button className="px-12 py-5 bg-primary text-white font-josef text-[17px]">
+                <button onClick={gotToShop} className="px-12 py-5 bg-primary text-white font-josef text-[17px]">
                   Shop Now
                 </button>
               </div>

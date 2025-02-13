@@ -1,7 +1,10 @@
 import React from "react";
 import AboutImg from "../../assets/aboutImg.png";
+import { useNavigate } from "react-router-dom";
 
 const AboutUsDt = () => {
+  const navigate = useNavigate();
+  const goToContactPage = ()=>{navigate("/contact")}
   return (
     <section className="pt-32">
       <div className="container mx-auto">
@@ -21,7 +24,7 @@ const AboutUsDt = () => {
                   Malesuada sem tristique amet erat vitae eget dolor lobortis.
                   Accumsan faucibus vitae lobortis quis bibendum quam.
                 </p>
-                <button className="bg-primary px-5 py-2 rounded-md font-lato font-semibold text-white text-[18px]">Contact Us</button>
+                <button onClick={goToContactPage} className="bg-primary px-5 py-2 rounded-md font-lato font-semibold text-white text-[18px]">Contact Us</button>
               </div>
             </div>
         

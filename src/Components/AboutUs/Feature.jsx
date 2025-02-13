@@ -13,7 +13,7 @@ const Feature = () => {
           <div className="text-center">
             <p className="font-josef font-bold text-[42px]">Our Features</p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex gap-5 justify-between">
             <FeaturesCard icon={DelivaryIcon} heading="Free Delivery" />
             <FeaturesCard icon={CashBackIcon} heading="100% Cash Back" />
             <FeaturesCard icon={QualityIcon} heading="Quality Product" />

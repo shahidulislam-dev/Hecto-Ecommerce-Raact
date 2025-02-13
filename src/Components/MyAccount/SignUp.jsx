@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WaterMark from "../../assets/watermark.png";
 import Banner from "../ComponentCommon/Banner";
 import { auth, db } from "../firebase"; 
@@ -51,12 +51,21 @@ const SignUp = () => {
         await setDoc(doc(db, "Users", user.uid), { email: user.email, firstName, lastName, photo: "" });
       }
       
-      toast.success("User Signed Up Successfully!!", { position: "top-center" });
+      toast.success("User Signed Up Successfully!!", { position: "top-center", autoClose: 1000 });
       navigate("/account")
     } catch (error) {
-      toast.error(error.message, { position: "top-center" });
+      toast.error(error.message, { position: "top-center", autoClose: 1000 });
     }
   };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigate("/account");
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   return (
     <>

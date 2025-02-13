@@ -75,7 +75,7 @@ const Featured = () => {
           <Slider ref={sliderRef} {...settings}>
             {data.map((item) => (
               <div className="!w-[90%] shadow-lg group relative mb-5" key={item.id}>
-                <div className="flex justify-center pt-20 pb-5 bg-[#F6F7FB] relative transition-all duration-300 group-hover:pt-16 group-hover:pb-10">
+                <div className="flex justify-center pt-20 pb-5 bg-[#F6F7FB] relative transition-all duration-300">
                   <div  className="absolute top-4 left-4 flex gap-2 transform -translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
                     <div onClick={() => { handleAddToCart(item) }} className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery">
                       <FiShoppingCart />
@@ -90,7 +90,7 @@ const Featured = () => {
                   <img
                     src={item.thumbnail}
                     alt="Product Image"
-                    className="transition-transform duration-300 group-hover:scale-90 w-48 h-48"
+                    className="transition-transform duration-300 group-hover:scale-90 w-48 h-48 pb-5"
                   />
                   <Link to={`/product-details/${(item.title).replaceAll(' ', '_')}`} onClick={() => handleProductDetail(item)}><button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#08D15F] hover:bg-primary text-white font-josef text-[12px] px-4 py-2 rounded">
                     View More

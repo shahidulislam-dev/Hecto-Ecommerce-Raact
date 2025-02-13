@@ -48,17 +48,17 @@ const LoginForm = () => {
       const user = userCredential.user;
 
       if (user.emailVerified) {
-        toast.success("User Logged in Successfully!!", { position: "top-center" });
+        toast.success("User Logged in Successfully!!", { position: "top-center" , autoClose: 1000});
         navigate("/home");
       } else {
-        toast.error("Please verify your email before logging in.", { position: "top-center" });
+        toast.error("Please verify your email before logging in.", { position: "top-center", autoClose: 1000 });
 
         await sendEmailVerification(user);
-        toast.info("Verification email sent. Please check your inbox.", { position: "top-center" });
+        toast.info("Verification email sent. Please check your inbox.", { position: "top-center" , autoClose: 1000});
         await auth.signOut();
       }
     } catch (error) {
-      toast.error(error.message, { position: "top-center" });
+      toast.error(error.message, { position: "top-center" , autoClose: 1000});
     }
   };
 
@@ -74,9 +74,7 @@ const LoginForm = () => {
           photo: user.photoURL,
           lastName: "",
         });
-        toast.success("User logged in Successfully", {
-          position: "top-center",
-        });
+        toast.success("User logged in Successfully", { position: "top-center", autoClose: 1000,});
         navigate("/home");
       }
     });
