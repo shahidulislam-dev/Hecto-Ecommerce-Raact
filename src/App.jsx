@@ -17,6 +17,7 @@ import SignUp from './Components/MyAccount/SignUp'
 import { useEffect, useState } from 'react'
 import { auth } from './Components/firebase'
 import { ToastContainer } from 'react-toastify'
+import Wishlist from './Components/Cart/wishlist'
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
       <Route path='/shop-list' element={<ProductListView/>}/>
       <Route path='/product-details/:id' element={<ProductDetailsPage/>}/>
       <Route path='/cart' element={<CartPage/>}/>
-      <Route path='/checkout' element={<CheckoutPage/>}/>
+      <Route path='/cart' element={<CartPage/>}/>
+      <Route path='/wishlist' element={<Wishlist/>}/>
       <Route path='*' element={<NotFoundPage/>}/>
       
     </Route>

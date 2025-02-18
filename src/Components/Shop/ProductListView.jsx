@@ -13,6 +13,7 @@ import { IoMdStar, IoMdStarOutline, IoMdStarHalf } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { addToCart, productDetails } from "../Slices/CartSlice";
 import { toast } from "react-toastify";
+import { addToWishlist } from "../Slices/WishlistSlice";
 
 const ProductListView = () => {
   const data = useContext(apiData);
@@ -193,6 +194,10 @@ const ProductListView = () => {
     handleNavigation();
   }
 
+
+  const handleAddToWishlist = (item) => {
+      dispatch(addToWishlist({ ...item, qty: 1 }));
+    }
 
 
   const renderStars = (rating) => {
@@ -399,7 +404,7 @@ const ProductListView = () => {
                         <p className="font-lato font-[400px] text-[#9295AA] text-[14px] w-[70%] pt-3">{item.description}</p>
                         <div className="flex gap-5 pt-5">
                           <div onClick={(e)=>{e.stopPropagation(); e.preventDefault(); handleAddToCart(item);}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiShoppingCart /></div>
-                          <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FaRegHeart /></div>
+                          <div onClick={(e)=>{e.stopPropagation(); e.preventDefault(); handleAddToWishlist(item)}} className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FaRegHeart /></div>
                           <div className="flex justify-center items-center w-8 h-8 rounded-full text-[#535399] text-[20px] hover:bg-white hover:shadow-lg"><FiZoomIn /></div>
                         </div>
                       </div>

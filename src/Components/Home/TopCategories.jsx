@@ -15,10 +15,11 @@ const TopCategories = () => {
     dots: false,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
     pauseOnHover: true,
+    speed: 2000
   };
 
   const dispatch = useDispatch();

@@ -8,6 +8,7 @@ import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
 import { useDispatch } from 'react-redux';
 import { addToCart, productDetails } from '../Slices/CartSlice';
+import { addToWishlist } from '../Slices/WishlistSlice';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -20,9 +21,10 @@ const Featured = () => {
     dots: false,
     infinite: true,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
+    speed: 2000, 
     responsive: [
       {
         breakpoint: 1024,
@@ -63,6 +65,10 @@ const Featured = () => {
     dispatch(productDetails(product));
   }
 
+  const handleAddToWishlist = (item) => {
+    dispatch(addToWishlist({ ...item, qty: 1 }));
+  }
+
   return (
     <section className="pt-12 pb-28">
       <div className="container mx-auto">
@@ -77,10 +83,10 @@ const Featured = () => {
               <div className="!w-[90%] shadow-lg group relative mb-5" key={item.id}>
                 <div className="flex justify-center pt-20 pb-5 bg-[#F6F7FB] relative transition-all duration-300">
                   <div  className="absolute top-4 left-4 flex gap-2 transform -translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
-                    <div onClick={() => { handleAddToCart(item) }} className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery">
+                    <div onClick={() => { handleAddToCart(item) }} className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery cursor-pointer">
                       <FiShoppingCart />
                     </div>
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery">
+                    <div onClick={()=>handleAddToWishlist(item)} className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery cursor-pointer">
                       <FaRegHeart />
                     </div>
                     <div className="flex items-center justify-center w-8 h-8 rounded-full text-[#1DB4E7] text-[20px] hover:bg-[#EEEFFB] hover:text-secondery">

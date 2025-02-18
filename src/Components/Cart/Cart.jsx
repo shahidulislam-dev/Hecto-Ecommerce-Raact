@@ -63,8 +63,8 @@ const Cart = () => {
                         <div className="w-[65%]">
                             {
                                 data.map((item, index) => (
-                                    <div className="">
-                                        <div key={item.id} className="flex items-center justify-between border-b-2 py-5">
+                                    <div key={item.id} className="">
+                                        <div className="flex items-center justify-between border-b-2 py-5">
                                             <div className="flex items-center gap-3 w-[45%]">
                                                 <div className="relative bg-slate-300">
                                                     <img src={item.thumbnail} alt="Product Image For Cart" className='w-20 h-[90px]' />

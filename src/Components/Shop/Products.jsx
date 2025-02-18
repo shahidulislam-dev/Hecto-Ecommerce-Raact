@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { addToCart, productDetails } from "../Slices/CartSlice";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { addToWishlist } from "../Slices/WishlistSlice";
 
 const Products = () => {
   const data = useContext(apiData);
@@ -183,6 +184,10 @@ const Products = () => {
     toast.success("Added To Cart!!", { position: "top-center", autoClose: 1000, });
   }
 
+  const handleAddToWishlist = (item) => {
+    dispatch(addToWishlist({ ...item, qty: 1 }));
+  }
+
   const handleProductDetail = (product) => {
     dispatch(productDetails(product));
   }
@@ -347,7 +352,7 @@ const Products = () => {
                           <FiShoppingCart />
 
                         </div>
-                        <div className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
+                        <div onClick={(e) => { e.stopPropagation(); handleAddToWishlist(item); }} className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white cursor-pointer">
                           <FaRegHeart />
                         </div>
                         <div className="flex justify-center items-center w-8 h-8 rounded-full text-secondery text-[20px] hover:bg-white">
