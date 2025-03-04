@@ -18,6 +18,9 @@ import { useEffect, useState } from 'react'
 import { auth } from './Components/firebase'
 import { ToastContainer } from 'react-toastify'
 import Wishlist from './Components/Cart/wishlist'
+import Checkout from './Components/Checkout/Checkout'
+import OrderPage from './Pages/OrderPage'
+import FaqPage from './Pages/FaqPage'
 
 function App() {
 
@@ -40,8 +43,10 @@ function App() {
       <Route path='/shop-list' element={<ProductListView/>}/>
       <Route path='/product-details/:id' element={<ProductDetailsPage/>}/>
       <Route path='/cart' element={<CartPage/>}/>
-      <Route path='/cart' element={<CartPage/>}/>
+      <Route path='/checkout' element={<CheckoutPage/>}/>
       <Route path='/wishlist' element={<Wishlist/>}/>
+      <Route path='/order-completed' element={<OrderPage/>}/>
+      <Route path='/frequently-asked-questions' element={<FaqPage/>}/>
       <Route path='*' element={<NotFoundPage/>}/>
       
     </Route>

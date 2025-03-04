@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import WaterMark from "../../assets/watermark.png";
 import Banner from "../ComponentCommon/Banner";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, db } from "../firebase";
+import { auth } from "../firebase";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { sendEmailVerification } from "firebase/auth";
@@ -65,15 +65,8 @@ const LoginForm = () => {
   const handleLoginWithGoogle = ()=>{
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then(async (result) => {
-      console.log(result);
       const user = result.user;
       if (result.user) {
-        await setDoc(doc(db, "Users", user.uid), {
-          email: user.email,
-          firstName: user.displayName,
-          photo: user.photoURL,
-          lastName: "",
-        });
         toast.success("User logged in Successfully", { position: "top-center", autoClose: 1000,});
         navigate("/home");
       }

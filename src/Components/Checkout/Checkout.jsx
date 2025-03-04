@@ -1,13 +1,14 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { useSelector } from 'react-redux'
-import { toast } from "react-toastify";
-import { auth, db } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
 
     let cartData = useSelector((state) => state.cartItemManager.cartItems);
+    const navigate = useNavigate();
+    const goToOrderCom = ()=>{
+        navigate("/order-completed")
+    }
 
     let sum = 0;
     for(let i = 0; i < cartData.length; i++){
@@ -31,32 +32,7 @@ const Checkout = () => {
         }
     };
 
-    const [userDetails, setUserDetails] = useState(null);
-
-    const fetchUserData = async () => {
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                try {
-                    const docRef = doc(db, "Users", user.uid);
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        setUserDetails(docSnap.data());
-                    } else {
-                        toast.error("User data not found in Firestore", { position: "top-center" });
-                    }
-                } catch (error) {
-                    toast.error("Error fetching user data:", error, { position: "top-center" });
-                }
-            } else {
-                setUserDetails(null);
-            }
-        });
-    };
-
-    useEffect(() => {
-        fetchUserData();
-    }, []);
-
+    const [isChecked, setIsChecked] = useState(false);
     
 
     return (
@@ -65,44 +41,6 @@ const Checkout = () => {
                 <h1 className='font-josef font-bold text-secondery text-[24px]'>Hecto Demo</h1>
                 <p className='font-lato font-[400px] pt-4 text-secondery text-[12px]'>Cart/ Information/ Shipping/ Payment</p>
                 <div className="flex justify-between pt-6">
-                    {userDetails ? (
-                        <div className="w-[68%] bg-[#F8F8FD] px-8 py-16">
-                        <div className="flex items-center justify-between">
-                            <h3 className='font-josef font-bold text-secondery text-[18px]'>Contact Information</h3>
-                            <h5 className='font-lato font-[500px] text-paragraph text-[14px] hover:text-primary hover:underline cursor-pointer'>Already have an account? Login</h5>
-                        </div>
-                        <input type="text" className='mt-10 border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='Email or mobile phone number' value={userDetails.email} />
-                        <div className="pt-7">
-                            <label className="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" className="cursor-pointer accent-[#19D16F]" />
-                                <p className="font-lato font-[400px] text-[12px] text-[#8A91AB]">Keep me up to date on news and excluive offers</p>
-                            </label>
-                        </div>
-
-                        <div className="pt-20">
-                            <h1 className='font-josef font-semibold text-secondery text-[18px]'>Shipping address</h1>
-                            <div className="pt-8 flex gap-10">
-                                <input type="text" className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='First name (optional)' value={userDetails.firstName} />
-                                <input type="text" className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='Last name' value={userDetails.lastName}/>
-                            </div>
-                            <div className="pt-10 flex gap-10">
-                                <input type="text" className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='Address' />
-                            </div>
-                            <div className="pt-10 flex gap-10">
-                                <input type="text" className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='Appartment,suit,e.t.c (optinal)' />
-                            </div>
-                            <div className="pt-10 flex gap-10">
-                                <input type="text" onChange={handleTotal} className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='City' />
-                            </div>
-                            <div className="pt-10 flex gap-10">
-                                <input type="text" className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='Bangladesh' />
-                                <input type="text" className='border-b-2 outline-none bg-transparent w-full pl-2 py-2 font-lato font-[600px] text-paragraph text-[14px]' placeholder='Postal Code' />
-                            </div>
-
-                            <button className='px-6 py-3 rounded-sm font-josef font-semibold bg-primary text-white text-[16px] mt-20'>Continue Shipping</button>
-                        </div>
-                    </div>
-                    ) : (
                         <div className="w-[68%] bg-[#F8F8FD] px-8 py-16">
                         <div className="flex items-center justify-between">
                             <h3 className='font-josef font-bold text-secondery text-[18px]'>Contact Information</h3>
@@ -139,7 +77,6 @@ const Checkout = () => {
                             <button className='px-6 py-3 rounded-sm font-josef font-semibold bg-primary text-white text-[16px] mt-20'>Continue Shipping</button>
                         </div>
                     </div>
-                    )}
                     
 
                     <div className="w-[30%]">
@@ -176,12 +113,12 @@ const Checkout = () => {
                                 </div>
                                 <div className="pt-7">
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" className="cursor-pointer accent-[#19D16F]" />
+                                        <input type="checkbox" className="cursor-pointer accent-[#19D16F]" checked={isChecked} onChange={(e)=> setIsChecked(e.target.checked)}/>
                                         <p className="font-lato font-[400px] text-[12px] text-[#8A91AB]">Shipping & taxes calculated at checkout</p>
                                     </label>
                                 </div>
                                 <div className="pt-9">
-                                    <button className='font-lato font-semibold text-[14px] text-white bg-[#19D16F] py-3 w-full rounded-md'>Proceed To Checkout</button>
+                                    <button onClick={goToOrderCom} className={`font-lato font-semibold text-[14px] text-white ${isChecked ?  'bg-[#19D16F]' : 'bg-gray-400 cursor-not-allowed'} py-3 w-full rounded-md`} disabled={!isChecked}>Proceed To Checkout</button>
                                 </div>
                             </div>
                     </div>

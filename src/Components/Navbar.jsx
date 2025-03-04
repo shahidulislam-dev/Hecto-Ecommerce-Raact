@@ -34,6 +34,7 @@ const Navbar = () => {
                             <li><Link to="/blog">Blog</Link></li>
                             <li><Link to="/shop">Shop</Link></li>
                             <li><Link to="/contact">Contact</Link></li>
+                            <li><Link to="/frequently-asked-questions">FAQ</Link></li>
                         </ul>
                     </div>
                     <div className="flex items-center relative">

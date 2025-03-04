@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ImCross } from "react-icons/im";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 const Cart = () => {
 
     let data = useSelector((state) => state.cartItemManager.cartItems)
-
+    const [isChecked, setIsChecked] = useState(false);
     let dispatch = useDispatch();
     const handleDeleteProduct = (index) => {
         dispatch(deleteItem(index))
@@ -110,13 +110,15 @@ const Cart = () => {
                                     <h5>${sum.toFixed(2)}</h5>
                                 </div>
                                 <div className="pt-7">
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" className="cursor-pointer accent-[#19D16F]" />
-                                        <p className="font-lato font-[400px] text-[12px] text-[#8A91AB]">Shipping & taxes calculated at checkout</p>
-                                    </label>
-                                </div>
+                                        <label className="flex items-center gap-2 cursor-pointer">
+                                            <input type="checkbox" className="cursor-pointer accent-[#19D16F]" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)}/>
+                                            <p className="font-lato font-[400px] text-[12px] text-[#8A91AB]">
+                                                Shipping & taxes calculated at checkout
+                                            </p>
+                                        </label>
+                                    </div>
                                 <div className="pt-9">
-                                    <button onClick={goToCheckout} className='font-lato font-semibold text-[14px] text-white bg-[#19D16F] py-3 w-full rounded-md'>Proceed To Checkout</button>
+                                <button onClick={() => navigate('/checkout')} className={`font-lato font-semibold text-[14px] text-white py-3 w-full rounded-md ${isChecked ? 'bg-[#19D16F]' : 'bg-gray-400 cursor-not-allowed'}`} disabled={!isChecked}> Proceed To Checkout</button>
                                 </div>
                             </div>
                             <div className="pt-8 ">
