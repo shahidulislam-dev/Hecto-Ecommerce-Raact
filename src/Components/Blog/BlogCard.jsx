@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaPenNib } from "react-icons/fa";
 import { LuCalendarDays } from "react-icons/lu";
+import { Link } from 'react-router-dom';
 const BlogCard = (props) => {
   return (
     <section className='pb-8'>
@@ -17,8 +18,8 @@ const BlogCard = (props) => {
             </div>
         </div>
         <h1 className='pt-7 font-josef font-bold text-secondery text-[30px]'>{props.heading}</h1>
-        <p className='pt-6 font-lato text-[#8A8FB9] text-[16px] pr-56'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
-        <h5 className='pt-8 font-lato font-semibold text-secondery text-[18px]'>Read More</h5>
+        <p className='pt-6 font-lato text-[#8A8FB9] text-[16px] '>{props.content}</p>
+        <Link to="/single-blog"><h5 className='pt-8 font-lato font-semibold text-secondery text-[18px]'>{props.btn}</h5></Link>
     </div>
     </section>
   )

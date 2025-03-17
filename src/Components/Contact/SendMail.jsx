@@ -18,11 +18,9 @@ const SendMail = () => {
             )
             .then(
                 () => {
-                    console.log('SUCCESS!');
                     toast.success("Email Sent Successfully!", { position: "top-center", autoClose: 1000, });
                 },
                 (error) => {
-                    console.log('FAILED...', error.text);
                     toast.error("Email Sending Failed. Try Again!", { position: "top-center", autoClose: 1000, });
                 }
             );

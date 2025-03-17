@@ -1,6 +1,35 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import SendMailImg from "../../assets/sendMailImg.png";
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
 
 const FAQ = () => {
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                'service_agike5f',
+                'template_73w6iwx',
+                form.current,
+                'bVR1hleSDxg5JH0nq'
+            )
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                    toast.success("Email Sent Successfully!", { position: "top-center", autoClose: 1000, });
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                    toast.error("Email Sending Failed. Try Again!", { position: "top-center", autoClose: 1000, });
+                }
+            );
+    };
+
+
     return (
         <section>
             <div className="container mx-auto">
@@ -27,16 +56,19 @@ const FAQ = () => {
                     </div>
                     <div className="w-[35%] bg-[#F8F8FD] px-10 pt-24">
                         <h2 className='font-josef font-bold text-secondery text-[24px]'>Ask a Question</h2>
-                        <div className="pt-28">
-                            <input type="text" placeholder='Your Name *' className='w-full h-12 pl-3 outline-none border-2 border-[#CDCEDC] rounded-md'/>
-                            <input type="text" placeholder='Subject *' className='w-full h-12 pl-3 outline-none border-2 border-[#CDCEDC] rounded-md mt-9'/>
-                            <div className="pt-9">
+                        <form ref={form} onSubmit={sendEmail}>
+                            <div className="pt-28">
+                                <input type="text" name="client_name" placeholder='Your Name *' className='w-full h-12 pl-3 outline-none border-2 border-[#CDCEDC] rounded-md' required />
+                                <input type="email" name="client_email" placeholder='Your Email *' className='w-full h-12 pl-3 outline-none border-2 border-[#CDCEDC] rounded-md mt-9' required />
+                                <div className="pt-9">
                                     <textarea name="message" rows="6" className='w-full px-3 border-2 border-[#CDCEDC] outline-none rounded-md' placeholder='Type your message*' required></textarea>
                                 </div>
                                 <div className="pt-11">
                                     <button type='submit' className='bg-primary px-11 py-2 rounded-md font-josef text-[16px] text-white'>Send Mail</button>
                                 </div>
-                        </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>

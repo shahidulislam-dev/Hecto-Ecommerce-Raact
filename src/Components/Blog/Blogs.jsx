@@ -29,14 +29,20 @@ const Blogs = () => {
             <BlogCard
               image={GirlsImg1}
               heading="Mauris at orci non vulputate diam tincidunt nec."
+              content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at."
+              btn="Read More"
             />
             <BlogCard
               image={GirlsImg2}
               heading="Aenean vitae in aliquam ultrices lectus. Etiam."
+              content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at."
+              btn="Read More"
             />
             <BlogCard
               image={GirlsImg3}
               heading="Sit nam congue feugiat nisl, mauris amet nisi."
+              content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at."
+              btn="Read More"
             />
             {/*Page Numbers*/ }
             <div className="flex gap-9 w-[236px] mx-auto pt-20">
